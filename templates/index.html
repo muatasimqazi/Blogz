@@ -4,9 +4,10 @@
 {% block content %}
 <h1>Blog Users:</h1>
 
+
 <ul>
-  {% for i in range(10) %}
-  <li><a href="#">li</a></li>
+  {% for user in users %}
+  <li><a href="?user={{user.username}}">{{user.username}}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}
