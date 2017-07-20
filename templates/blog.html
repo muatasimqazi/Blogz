@@ -4,9 +4,7 @@
   {% if blog_id %}
   <header>
     <h2>{{blog.title}}</h2>
-    <small><b class="date">Published on:</b> {{blog.date.strftime('%B %d, %Y')}}</small>
-    <small><b class="date">Author:</b> {{blog.date.strftime('%B %d, %Y')}}</small>
-
+    <small><span class="red">Published on</span> {{blog.date.strftime('%B %d, %Y')}} <span class="red">by</span> <b><a href="?user={{blog.owner.username}}">{{blog.owner.username}}</a></b></small>
     <hr>
   </header>
   <p>{{blog.body}}</p>
@@ -14,11 +12,13 @@
   {% else %} {% for blog in blogs|sort(attribute='date', reverse = True) %}
   <header>
     <h2><a href="/blog?id={{blog.id}}">{{blog.title}}</a></h2>
+
   </header>
   <p>{{blog.body}}</p>
 
   <footer>
-    <small><b class="date">Published on:</b> {{blog.date.strftime('%B %d, %Y')}}</small>
+    <small><span class="red">Published on</span> {{blog.date.strftime('%B %d, %Y')}} <span class="red">by</span> <b><a href="?user={{blog.owner.username}}">{{blog.owner.username}}</a></b></small>
+
       <hr>
   </footer>
 

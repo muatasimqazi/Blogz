@@ -1,4 +1,31 @@
-<!-- We will also add a singleUser.html template that will be used to display
-only the blogs associated with a single given author. It will be used when we dynamically
-generate a page using a GET request with a user query parameter on the /blog route (similar to how we
-dynamically generated individual blog entry pages in the last assignment). -->
+{% extends "base.html" %} {% block content %}
+
+
+<article>
+  <h1>User Blogs:</h1>
+{% for blog in blogs|sort(attribute='date', reverse = True) %}
+  <header>
+    <h3>{{blog.title}}</h3>
+  </header>
+  <p>{{blog.body}}</p>
+
+  <footer>
+    <small><span class="red">Published on</span> {{blog.date.strftime('%B %d, %Y')}} <span class="red">by</span> <b>{{blog.owner.username}}</b></small>
+
+      <hr>
+  </footer>
+
+  {% endfor %}
+</article>
+<!--
+<aside>
+  <h3>aside</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur
+    posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
+</aside> -->
+
+
+
+
+
+{% endblock %}

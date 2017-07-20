@@ -74,10 +74,16 @@ def create_newpost():
 def display_posts():
 
     blog_id = request.args.get('id')
-    if  blog_id:
+    user = request.args.get('user')
 
+    if  blog_id:
         blog_post = Blog.query.filter_by(id=blog_id).first()
         return render_template('blog.html', blog=blog_post, blog_id=blog_id, title="Build a Blog")
+
+    elif user:
+        user = User.query.filter_by(username=user).first()
+        user_posts = Blog.query.filter_by(owner=user).all()
+        return render_template("singleUser.html", blogs=user_posts)
 
     else:
         blog_posts = Blog.query.all()
@@ -86,7 +92,7 @@ def display_posts():
 
 @app.before_request
 def require_login():
-    allowed_routes = ['index', 'display_posts', 'login', 'register']
+    allowed_routes = ['index', 'display_posts', 'login', 'signup']
     if request.endpoint not in allowed_routes and 'username' not in session:
         return redirect('/login')
 
@@ -155,6 +161,9 @@ def logout():
 
 @app.route('/')
 def index():
+    user = request.args.get('user')
+    if user:
+        return display_posts()
 
     users = User.query.all()
     return render_template('index.html', users=users)
