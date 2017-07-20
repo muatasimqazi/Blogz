@@ -47,6 +47,7 @@ def create_newpost():
 
     if request.method == 'POST':
 
+        owner = User.query.filter_by(username=session['username']).first()
         blog_title = request.form['blog-title']
         if not blog_title:
             error_title = "Please fill in the title"
@@ -61,7 +62,7 @@ def create_newpost():
                 error_body = 'Your blog post exceeds the limit'
 
             else:
-                blog_post = Blog(blog_title, blog_body)
+                blog_post = Blog(blog_title, blog_body, owner)
                 db.session.add(blog_post)
                 db.session.commit()
                 blog_id = blog_post.id;
