@@ -1,9 +1,12 @@
 {% extends "base.html" %} {% block content %}
 <article>
+  <h1>Blog Posts:</h1>
   {% if blog_id %}
   <header>
     <h2>{{blog.title}}</h2>
     <small><b class="date">Published on:</b> {{blog.date.strftime('%B %d, %Y')}}</small>
+    <small><b class="date">Author:</b> {{blog.date.strftime('%B %d, %Y')}}</small>
+
     <hr>
   </header>
   <p>{{blog.body}}</p>

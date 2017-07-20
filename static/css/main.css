@@ -93,13 +93,13 @@ body {
    ============== */
 
 nav ul {
-    margin: 0;
+    /*margin: 0;*/
     padding: 0;
     list-style-type: none;
 }
 
 nav a {
-    display: block;
+    /*display: block;*/
     margin-bottom: 10px;
     padding: 15px 0;
 
@@ -178,10 +178,16 @@ input[type=submit] {
 
 }
 
+nav.right{
+  float: right;
+}
 
-
-
-
+nav.left {
+  float: left;
+}
+.error {
+  color: red;
+}
 
 
 
@@ -200,11 +206,12 @@ input[type=submit] {
    ==================== */
 
     nav a {
-        float: left;
-        width: 35%;
-        margin: 0 1.7%;
-        padding: 25px 2%;
+        /*float: left;*/
+        /*width: 35%;*/
+        /*margin: 0 1.7%;*/
+        /*padding: 25px 2%;*/
         margin-bottom: 0;
+        padding: 15px 15px 21px 15px;
     }
 
     nav li:first-child a {
@@ -250,8 +257,8 @@ input[type=submit] {
     }
 
     nav {
-        float: right;
-        width: 38%;
+        /*float: right;*/
+        /*width: 38%;*/
     }
 
 /* ============
