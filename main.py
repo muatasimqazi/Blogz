@@ -140,7 +140,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout')
 def logout():
     del session['username']
     return redirect('/blog')
