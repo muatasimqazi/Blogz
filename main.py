@@ -82,6 +82,13 @@ def display_posts():
         blog_posts = Blog.query.all()
         return render_template('blog.html', blogs=blog_posts, title="Build a Blog")
 
+
+@app.before_request
+def require_login():
+    allowed_routes = ['index', 'display_posts', 'login', 'register']
+    if request.endpoint not in allowed_routes and 'username' not in session:
+        return redirect('/login')
+
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
 
