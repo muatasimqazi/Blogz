@@ -91,7 +91,7 @@ def display_posts():
 
 @app.before_request
 def require_login():
-    allowed_routes = ['index', 'display_posts', 'login', 'signup']
+    allowed_routes = ['index', 'display_posts', 'login', 'signup', 'static']
     if request.endpoint not in allowed_routes and 'username' not in session:
         return redirect('/login')
 
