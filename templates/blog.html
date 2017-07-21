@@ -1,7 +1,8 @@
 {% extends "base.html" %} {% block content %}
 <article>
-  <h1>Blog Posts:</h1>
+
   {% if blog_id %}
+    <h1>Blog Post:</h1>
   <header>
     <h2>{{blog.title}}</h2>
     <small><span class="red">Published on</span> {{blog.date.strftime('%B %d, %Y')}} <span class="red">by</span> <b><a href="?user={{blog.owner.username}}">{{blog.owner.username}}</a></b></small>
@@ -9,7 +10,9 @@
   </header>
   <p>{{blog.body}}</p>
 
-  {% else %} {% for blog in blogs|sort(attribute='date', reverse = True) %}
+  {% else %}
+    <h1>Blog Posts:</h1>
+    {% for blog in blogs %}
   <header>
     <h2><a href="/blog?id={{blog.id}}">{{blog.title}}</a></h2>
 

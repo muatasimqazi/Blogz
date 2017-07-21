@@ -5,7 +5,7 @@
   <h1>User Blogs:</h1>
 {% for blog in blogs|sort(attribute='date', reverse = True) %}
   <header>
-    <h3>{{blog.title}}</h3>
+    <h3><a href="?id={{blog.id}}">{{blog.title}}</a></h3>
   </header>
   <p>{{blog.body}}</p>
 
